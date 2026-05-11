@@ -44,6 +44,9 @@ public final class SearchParameters {
     private final Long savingsId;
     private final Boolean orphansOnly;
 
+    private final String birthMonth;
+    private final String birthDay;
+
     // Provisning Entries Search Params
     private final Long provisioningEntryId;
     private final Long productId;
@@ -182,7 +185,7 @@ public final class SearchParameters {
     }
 
     public static SearchParameters forSavings(final String sqlSearch, final String externalId, final Integer offset, final Integer limit,
-            final String orderBy, final String sortOrder) {
+            final String orderBy, final String sortOrder, final String birthMonth, final String birthDay) {
 
         final Integer maxLimitAllowed = getCheckedLimit(limit);
         final Long staffId = null;
@@ -193,7 +196,7 @@ public final class SearchParameters {
         final boolean isSelfUser = false;
 
         return new SearchParameters(sqlSearch, null, externalId, null, null, null, null, offset, maxLimitAllowed, orderBy, sortOrder,
-                staffId, accountNo, loanId, savingsId, orphansOnly, isSelfUser);
+                staffId, accountNo, loanId, savingsId, orphansOnly, isSelfUser, birthMonth, birthDay);
     }
 
     public static SearchParameters forAccountTransfer(final String sqlSearch, final String externalId, final Integer offset,
@@ -268,6 +271,8 @@ public final class SearchParameters {
         this.productId = null;
         this.categoryId = null;
         this.isSelfUser = isSelfUser;
+        this.birthMonth = null;
+        this.birthDay = null;
         this.status = null;
 
     }
@@ -297,6 +302,8 @@ public final class SearchParameters {
         this.productId = null;
         this.categoryId = null;
         this.isSelfUser = isSelfUser;
+        this.birthMonth = null;
+        this.birthDay = null;
         this.status = status;
 
     }
@@ -326,6 +333,8 @@ public final class SearchParameters {
         this.productId = null;
         this.categoryId = null;
         this.isSelfUser = isSelfUser;
+        this.birthMonth = null;
+        this.birthDay = null;
         this.status = null;
     }
 
@@ -352,6 +361,8 @@ public final class SearchParameters {
         this.productId = productId;
         this.categoryId = categoryId;
         this.isSelfUser = false;
+        this.birthMonth = null;
+        this.birthDay = null;
         this.status = null;
 
     }
@@ -381,6 +392,39 @@ public final class SearchParameters {
         this.productId = null;
         this.categoryId = null;
         this.isSelfUser = false;
+        this.birthMonth = null;
+        this.birthDay = null;
+        this.status = null;
+
+    }
+
+    public SearchParameters(final String sqlSearch, final Long officeId, final String externalId, final String name,
+                            final String hierarchy, final String firstname, final String lastname, final Integer offset, final Integer limit,
+                            final String orderBy, final String sortOrder, final Long staffId, final String accountNo, final Long loanId,
+                            final Long savingsId, final Boolean orphansOnly, boolean isSelfUser, final String birthMonth, final String birthDay) {
+        this.sqlSearch = sqlSearch;
+        this.officeId = officeId;
+        this.externalId = externalId;
+        this.name = name;
+        this.hierarchy = hierarchy;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.offset = offset;
+        this.limit = limit;
+        this.orderBy = orderBy;
+        this.sortOrder = sortOrder;
+        this.staffId = staffId;
+        this.accountNo = accountNo;
+        this.loanId = loanId;
+        this.savingsId = savingsId;
+        this.orphansOnly = orphansOnly;
+        this.currencyCode = null;
+        this.provisioningEntryId = null;
+        this.productId = null;
+        this.categoryId = null;
+        this.isSelfUser = isSelfUser;
+        this.birthMonth = birthMonth;
+        this.birthDay = birthDay;
         this.status = null;
 
     }
@@ -543,6 +587,10 @@ public final class SearchParameters {
     public boolean isSelfUser() {
         return this.isSelfUser;
     }
+
+    public String getBirthMonth() {return this.birthMonth; }
+
+    public String getBirthDay() {return this.birthDay; }
 
     /**
      * creates an instance of the SearchParameters from a request for the report mailing job run history
