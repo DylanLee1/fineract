@@ -44,8 +44,8 @@ public final class SearchParameters {
     private final Long savingsId;
     private final Boolean orphansOnly;
 
-    private final String birthMonth;
-    private final String birthDay;
+    private final Integer birthMonth;
+    private final Integer birthDay;
 
     // Provisning Entries Search Params
     private final Long provisioningEntryId;
@@ -185,7 +185,7 @@ public final class SearchParameters {
     }
 
     public static SearchParameters forSavings(final String sqlSearch, final String externalId, final Integer offset, final Integer limit,
-            final String orderBy, final String sortOrder, final String birthMonth, final String birthDay) {
+            final String orderBy, final String sortOrder, final Integer birthMonth, final Integer birthDay) {
 
         final Integer maxLimitAllowed = getCheckedLimit(limit);
         final Long staffId = null;
@@ -401,7 +401,7 @@ public final class SearchParameters {
     public SearchParameters(final String sqlSearch, final Long officeId, final String externalId, final String name,
                             final String hierarchy, final String firstname, final String lastname, final Integer offset, final Integer limit,
                             final String orderBy, final String sortOrder, final Long staffId, final String accountNo, final Long loanId,
-                            final Long savingsId, final Boolean orphansOnly, boolean isSelfUser, final String birthMonth, final String birthDay) {
+                            final Long savingsId, final Boolean orphansOnly, boolean isSelfUser, final Integer birthMonth, final Integer birthDay) {
         this.sqlSearch = sqlSearch;
         this.officeId = officeId;
         this.externalId = externalId;
@@ -588,9 +588,9 @@ public final class SearchParameters {
         return this.isSelfUser;
     }
 
-    public String getBirthMonth() {return this.birthMonth; }
+    public Integer getBirthMonth() {return this.birthMonth; }
 
-    public String getBirthDay() {return this.birthDay; }
+    public Integer getBirthDay() {return this.birthDay; }
 
     /**
      * creates an instance of the SearchParameters from a request for the report mailing job run history

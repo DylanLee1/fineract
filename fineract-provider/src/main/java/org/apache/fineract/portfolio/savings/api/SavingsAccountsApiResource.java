@@ -129,8 +129,8 @@ public class SavingsAccountsApiResource {
             @QueryParam("limit") @Parameter(description = "limit") final Integer limit,
             @QueryParam("orderBy") @Parameter(description = "orderBy") final String orderBy,
             @QueryParam("sortOrder") @Parameter(description = "sortOrder") final String sortOrder,
-            @QueryParam("birthMonth") @Parameter(description = "birthMonth") final String birthMonth,
-            @QueryParam("birthDay") @Parameter(description = "birthDay") final String birthDay) {
+            @QueryParam("birthMonth") @Parameter(description = "birthMonth") final Integer birthMonth,
+            @QueryParam("birthDay") @Parameter(description = "birthDay") final Integer birthDay) {
 
         context.authenticatedUser().validateHasReadPermission(SavingsApiConstants.SAVINGS_ACCOUNT_RESOURCE_NAME);
 
