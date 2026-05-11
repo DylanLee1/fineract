@@ -208,12 +208,12 @@ public class SavingsAccountReadPlatformServiceImpl implements SavingsAccountRead
                 objectArray[arrayPos] = searchParameters.getExternalId();
                 arrayPos = arrayPos + 1;
             }
-            if (searchParameters.getOfficeId() != null) {
+            else if (searchParameters.getOfficeId() != null) {
                 sqlBuilder.append("and c.office_id =?");
                 objectArray[arrayPos] = searchParameters.getOfficeId();
                 arrayPos = arrayPos + 1;
             }
-            if (searchParameters.getBirthMonth() != null && searchParameters.getBirthDay() != null) {
+            else if (searchParameters.getBirthMonth() != null && searchParameters.getBirthDay() != null) {
 
                 sqlBuilder.append(" and MONTH(c.date_of_birth) = ?");
                 objectArray[arrayPos] = Integer.parseInt(searchParameters.getBirthMonth());
